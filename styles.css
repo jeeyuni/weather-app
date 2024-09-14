@@ -1,7 +1,7 @@
 
 body {
 
-    background: #ffffff;
+    background: #e2dcde ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,17 +19,20 @@ body {
 }
 
 h2 {
-    color: #c8d9e6;
+    color: #0e0e10;
     margin: 8px 0;
    
 }
 
 button {
-    color: #2f4156;
+    color: #0e0e10;
     margin: 8px;
     font-family:Arial, Helvetica, sans-serif;
     padding: 10px;
     border: 1px solid white;
+    border-radius: 10px;
+    background-color: #be1d15;
+
 }
 
 input {
