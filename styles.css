@@ -1,0 +1,31 @@
+
+body {
+
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+#weather-container  {
+    background : #f5efeb;
+    padding : 20px;
+    border-radius: 15px;
+    height: 400px;
+}
+
+h2 {
+    color: #c8d9e6;
+    margin: 8px 0;
+   
+}
+
+button {
+    color: #2f4156;
+    margin: 8px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
