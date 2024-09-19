@@ -26,16 +26,13 @@ async function fetchWeather() {
     const responseForecast = await fetch(forecastUrl);
     const forecastData = await responseForecast.json();
 
-    // console.log(forecastData);
-    // console.log(data);
-    
     displayCurrentWeather(data);
-    displayTodayWeather(data);
-    // displayTomorrowWeather(forecastData.list);
-    // displayTwoDaysLaterWeather(forecastData.list);
-    // console.log(forecastData.list);
+    displayTodayWeather(forecastData.list);
+    displayTomorrowWeather(forecastData.list);
+    displayTwoDaysLaterWeather(forecastData.list);
 
 }
+
 //placeholder function to display data on site for testing
 function displayCurrentWeather(data) {
     const newImageElement = document.createElement('img');
@@ -57,12 +54,26 @@ function displayCurrentWeather(data) {
     weatherHumidity.textContent = `${data.main.humidity}% Humidity`;
     weatherDescription.textContent = `${data.weather[0].description}`;
 
-    
+
 }
 
 function displayTodayWeather(data) {
+    //5 days every 8 hours forecast, cutting the array from 0 to 8.
+    const timeInterval = data.slice(0, 8);
+    let addTemp = 0;
+    console.log(timeInterval);
+
+    //calculating average temperature from timeInterval
+    for (let i = 0; i < timeInterval.length; i++) {
+        let temp = timeInterval[i].main.temp;
+        addTemp = temp + addTemp;
+    }
+    //rounding up the number to 2 decimal point
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
+    
+    //setting up variables
     const newImageElement = document.createElement('img');
-    newImageElement.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
 
     const weather = document.getElementById("today-weather");
     const weatherTemp = document.getElementById("today-weather-temp");
@@ -74,35 +85,74 @@ function displayTodayWeather(data) {
     weatherDescription.innerHTML = '';
 
     weather.appendChild(newImageElement);
-    weatherTemp.textContent = `${data.main.temp}\u00B0F`;
-    weatherDescription.textContent = `${data.weather[0].description}`;
-
+    weatherTemp.textContent = `${averageTemp}\u00B0F`;
+    weatherDescription.textContent = `${data[3].weather[0].description}`;
 
 }
 
-// function displayTomorrowData(data) {
-//     const tomorrow = data.slice(1,9);
+function displayTomorrowWeather(data) {
+    //5 days every 8 hours forecast, cutting the array from 8 to 16.
+    const timeInterval = data.slice(8, 16);
+    let addTemp = 0;
+    console.log(timeInterval);
 
+    //calculating average temperature from timeInterval
+    for (let i = 0; i < timeInterval.length; i++) {
+        let temp = timeInterval[i].main.temp;
+        addTemp = temp + addTemp;
+    }
+    //rounding up the number to 2 decimal point
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
+    
+    //setting up variables
+    const newImageElement = document.createElement('img');
+    newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
 
+    const weather = document.getElementById("tomorrow-weather");
+    const weatherTemp = document.getElementById("tomorrow-weather-temp");
+    const weatherDescription = document.getElementById("tomorrow-weather-description");
 
-//     const newImageElement = document.createElement('img');
-//     newImageElement.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+    //clearing pervious contents
+    weather.innerHTML = '';
+    weatherTemp.innerHTML = '';
+    weatherDescription.innerHTML = '';
 
-//     const weather = document.getElementById("tomorrow-weather");
-//     const weatherTemp = document.getElementById("tomorrow-weather-temp");
-//     const weatherDescription = document.getElementById("tomorrow-weather-description");
+    weather.appendChild(newImageElement);
+    weatherTemp.textContent = `${averageTemp}\u00B0F`;
+     weatherDescription.textContent = `${data[3].weather[0].description}`;
+}
 
-//     //clearing pervious contents
-//     weather.innerHTML = '';
-//     weatherTemp.innerHTML = '';
-//     weatherDescription.innerHTML = '';
+function displayTwoDaysLaterWeather(data) {
+    //5 days every 8 hours forecast, cutting the array from 16 to 24.
+    const timeInterval = data.slice(16, 24);
+    let addTemp = 0;
+    console.log(timeInterval);
 
-//     weather.appendChild(newImageElement);
-//     weatherTemp.textContent = `${data.main.temp}\u00B0F`;
-//     weatherDescription.textContent = `${data.weather[0].description}`;
+    //calculating average temperature from timeInterval
+    for (let i = 0; i < timeInterval.length; i++) {
+        let temp = timeInterval[i].main.temp;
+        addTemp = temp + addTemp;
+    }
+    //rounding up the number to 2 decimal point
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
+    
+    //setting up variables
+    const newImageElement = document.createElement('img');
+    newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
 
+    const weather = document.getElementById("twodayslater-weather");
+    const weatherTemp = document.getElementById("twodayslater-weather-temp");
+    const weatherDescription = document.getElementById("twodayslater-weather-description");
 
-// }
+    //clearing pervious contents
+    weather.innerHTML = '';
+    weatherTemp.innerHTML = '';
+    weatherDescription.innerHTML = '';
+
+    weather.appendChild(newImageElement);
+    weatherTemp.textContent = `${averageTemp}\u00B0F`;
+     weatherDescription.textContent = `${data[3].weather[0].description}`;
+}
 
 
 fetchWeather();
