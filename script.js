@@ -19,15 +19,15 @@ async function fetchWeather() {
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
 
-    console.log(inputCity);
+    // console.log(inputCity);
     const response = await fetch(url);
     const data = await response.json();
 
     const responseForecast = await fetch(forecastUrl);
     const forecastData = await responseForecast.json();
 
-    console.log(forecastData);
-    console.log(data);
+    // console.log(forecastData);
+    // console.log(data);
     
     displayCurrentWeather(data);
     displayTodayWeather(data);
@@ -39,38 +39,68 @@ async function fetchWeather() {
 //placeholder function to display data on site for testing
 function displayCurrentWeather(data) {
     const newImageElement = document.createElement('img');
-    newImageElement.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    newImageElement.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-    document.getElementById("weather").appendChild(newImageElement);
-    document.getElementById("weather-temp").textContent = `${data.main.temp}\u00B0F`;
-    document.getElementById("weather-humidity").textContent = `${data.main.humidity}% Humidity`;
-    document.getElementById("weather-description").textContent = `${data.weather[0].description}`;
+    const weather = document.getElementById("weather");
+    const weatherTemp = document.getElementById("weather-temp");
+    const weatherHumidity = document.getElementById("weather-humidity");
+    const weatherDescription = document.getElementById("weather-description");
 
-    //newImageElement.innerHTML = '';
+    //clearing pervious contents
+    weather.innerHTML = '';
+    weatherTemp.innerHTML = '';
+    weatherHumidity.innerHTML = '';
+    weatherDescription.innerHTML = '';
+
+    weather.appendChild(newImageElement);
+    weatherTemp.textContent = `${data.main.temp}\u00B0F`;
+    weatherHumidity.textContent = `${data.main.humidity}% Humidity`;
+    weatherDescription.textContent = `${data.weather[0].description}`;
+
+    
 }
 
 function displayTodayWeather(data) {
     const newImageElement = document.createElement('img');
-    newImageElement.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    newImageElement.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
-    document.getElementById("today-weather").appendChild(newImageElement);
-    document.getElementById("today-weather-temp").textContent = `${data.main.temp}\u00B0F`;
-    document.getElementById("today-weather-humidity").textContent = `${data.main.humidity}% Humidity`;
-    document.getElementById("today-weather-description").textContent = `${data.weather[0].description}`;
+    const weather = document.getElementById("today-weather");
+    const weatherTemp = document.getElementById("today-weather-temp");
+    const weatherDescription = document.getElementById("today-weather-description");
+
+    //clearing pervious contents
+    weather.innerHTML = '';
+    weatherTemp.innerHTML = '';
+    weatherDescription.innerHTML = '';
+
+    weather.appendChild(newImageElement);
+    weatherTemp.textContent = `${data.main.temp}\u00B0F`;
+    weatherDescription.textContent = `${data.weather[0].description}`;
+
 
 }
 
-// function displayTomorrowWeather(data) {
-//     const newImageElement = document.getElementById('tomorrow-weather');
-//     const tomorrow = data.slice(9,16);
-//     //newImageElement.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+// function displayTomorrowData(data) {
+//     const tomorrow = data.slice(1,9);
 
-//     tomorrow.forEach(item =>) {
 
-//     }
-//     document.getElementById("tomorrow-weather").appendChild(newImageElement);
-//     document.getElementById("tomorrow-temp").textContent = `${data.main.temp}\u00B0F`;
-//     document.getElementById("tomorrow-description").textContent = `${data.weather[0].description}`;
+
+//     const newImageElement = document.createElement('img');
+//     newImageElement.src = ` https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+//     const weather = document.getElementById("tomorrow-weather");
+//     const weatherTemp = document.getElementById("tomorrow-weather-temp");
+//     const weatherDescription = document.getElementById("tomorrow-weather-description");
+
+//     //clearing pervious contents
+//     weather.innerHTML = '';
+//     weatherTemp.innerHTML = '';
+//     weatherDescription.innerHTML = '';
+
+//     weather.appendChild(newImageElement);
+//     weatherTemp.textContent = `${data.main.temp}\u00B0F`;
+//     weatherDescription.textContent = `${data.weather[0].description}`;
+
 
 // }
 
