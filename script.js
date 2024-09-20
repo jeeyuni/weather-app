@@ -61,16 +61,15 @@ function displayTodayWeather(data) {
     //5 days every 8 hours forecast, cutting the array from 0 to 8.
     const timeInterval = data.slice(0, 8);
     let addTemp = 0;
-    console.log(timeInterval);
-
+    
     //calculating average temperature from timeInterval
     for (let i = 0; i < timeInterval.length; i++) {
         let temp = timeInterval[i].main.temp;
         addTemp = temp + addTemp;
     }
     //rounding up the number to 2 decimal point
-    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
-    
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100;
+
     //setting up variables
     const newImageElement = document.createElement('img');
     newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
@@ -94,7 +93,6 @@ function displayTomorrowWeather(data) {
     //5 days every 8 hours forecast, cutting the array from 8 to 16.
     const timeInterval = data.slice(8, 16);
     let addTemp = 0;
-    console.log(timeInterval);
 
     //calculating average temperature from timeInterval
     for (let i = 0; i < timeInterval.length; i++) {
@@ -102,8 +100,8 @@ function displayTomorrowWeather(data) {
         addTemp = temp + addTemp;
     }
     //rounding up the number to 2 decimal point
-    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
-    
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100;
+
     //setting up variables
     const newImageElement = document.createElement('img');
     newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
@@ -119,14 +117,13 @@ function displayTomorrowWeather(data) {
 
     weather.appendChild(newImageElement);
     weatherTemp.textContent = `${averageTemp}\u00B0F`;
-     weatherDescription.textContent = `${data[3].weather[0].description}`;
+    weatherDescription.textContent = `${data[3].weather[0].description}`;
 }
 
 function displayTwoDaysLaterWeather(data) {
     //5 days every 8 hours forecast, cutting the array from 16 to 24.
     const timeInterval = data.slice(16, 24);
     let addTemp = 0;
-    console.log(timeInterval);
 
     //calculating average temperature from timeInterval
     for (let i = 0; i < timeInterval.length; i++) {
@@ -134,8 +131,8 @@ function displayTwoDaysLaterWeather(data) {
         addTemp = temp + addTemp;
     }
     //rounding up the number to 2 decimal point
-    let averageTemp = Math.round((addTemp / 8) * 100) / 100 ;
-    
+    let averageTemp = Math.round((addTemp / 8) * 100) / 100;
+
     //setting up variables
     const newImageElement = document.createElement('img');
     newImageElement.src = ` https://openweathermap.org/img/wn/${timeInterval[3].weather[0].icon}.png`;
@@ -151,7 +148,7 @@ function displayTwoDaysLaterWeather(data) {
 
     weather.appendChild(newImageElement);
     weatherTemp.textContent = `${averageTemp}\u00B0F`;
-     weatherDescription.textContent = `${data[3].weather[0].description}`;
+    weatherDescription.textContent = `${data[3].weather[0].description}`;
 }
 
 

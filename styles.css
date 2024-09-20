@@ -1,47 +1,118 @@
-/* 
+/* COLORS THEME ------- */
+
+/* full moon sky : rgb(47,57,65)
+modern navy : rgb(42,66,99)
+dusky blue : rgb(122,149,177)
+light slate: rgb(155,167,180)
+cool grey : rgb(211, 220, 225) 
+bright star : rgb(246, 249, 252) */
+
 body {
 
-    background: #e2dcde ;
+    background: rgb(246, 249, 252) ;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: flex;
     margin: 0;
     font-family:Arial, Helvetica, sans-serif;
 
 }
 
 #weather-container  {
-    background : #f5efeb;
+    background : rgb(211, 220, 225);
+    padding : 2rem;
+    width: 40%;
+    margin: 4rem auto;
+    border-radius: 10px;
+    height: 400px;
+}
+
+#currentweather-container {
+    background: rgb(155,167,180);
     padding : 20px;
     border-radius: 15px;
-    height: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: flex;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+#today-container {
+    background: rgb(155,167,180);
+    padding : 20px;
+    border-radius: 15px;
+    height: 50px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: flex;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+#tomorrow-container {
+    background: rgb(155,167,180);
+    padding : 20px;
+    border-radius: 15px;
+    height: 50px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: flex;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#twodayslater-container {
+    background: rgb(155,167,180);
+    padding : 20px;
+    border-radius: 15px;
+    height: 50px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: flex;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 h2 {
     color: #0e0e10;
     margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
    
 }
 
 button {
-    color: #0e0e10;
+    color: rgb(246, 249, 252);
     margin: 8px;
     font-family:Arial, Helvetica, sans-serif;
     padding: 10px;
-    border: 1px solid white;
+    border: none;
     border-radius: 10px;
-    background-color: #be1d15;
+    background-color: rgb(42,66,99);
 
 }
 
 input {
+    color: rgb(246, 249, 252);
     width: auto;
     padding: 8px;
     box-sizing: border-box;
     border-radius: 10px;
-    border: 1px solid white;
+    border: none;
     margin-top: 15px;
     font-family:Arial, Helvetica, sans-serif;
 
-} */
+}
