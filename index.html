@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
 
-<body>
-    <div id="weather-container">
-        <h2>Weather App</h2>
-        <input type="text" id="city" placeholder="Enter a city">
-        <button onclick="fetchWeather()">Search</button>
-        <span id="weather"></span>
-        <span id="weather-temp"></span>
-        <span id="weather-description"></span>
+  <body>
+    <div id="weather-container" class="container text-center mt-5">
+      <h2>Weather App</h2>
+      <input
+        type="text"
+        id="city"
+        placeholder="Enter a city"
+        class="form-control mb-3"
+      />
+      <button onclick="fetchWeather()" class="btn btn-danger">Search</button>
 
+      <!-- Current Weather Card -->
+      <div id="weather-card" class="card mt-4" style="display: none">
+        <img id="weather-icon" class="card-img-top" alt="Weather Icon" />
+        <div class="card-body">
+          <h5 id="weather-temp" class="card-title"></h5>
+          <p id="weather-description" class="card-text"></p>
+          <p id="weather-humidity" class="card-text"></p>
+        </div>
+      </div>
 
-        <!-- <div id="imageContainer"></div> -->
-        
-        <script src="script.js"></script>
-</body>
+      <!-- Hourly Weather Section -->
+      <h3 class="mt-5">Hourly Weather</h3>
+      <div id="hourly-weather-container" class="row mt-4">
+        <!-- Dynamic hourly weather cards will be inserted here -->
+      </div>
+    </div>
 
+    <script src="script.js"></script>
+  </body>
 </html>
